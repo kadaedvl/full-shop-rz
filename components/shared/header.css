@@ -1,0 +1,33 @@
+.container-header {
+    max-width: 1000px;
+    padding: 0 10px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 1.5rem;
+    /* border: 1px solid black; */
+}
+.container-header p{
+    font-size: 1.5rem;
+}
+.header-input {
+    flex: 1 1 auto;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    padding: 10px;
+
+}
+.header-activ {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+button {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.205);
+    padding: 10px;
+}

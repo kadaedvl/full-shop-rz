@@ -1,0 +1,26 @@
+.cat-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.cat-list li {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.cat-list li.active {
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
+
+@media (any-hover: hover) {
+    .cat-list li:hover {
+        cursor: pointer;
+        background-color: black;
+        color: white;
+    }
+}
