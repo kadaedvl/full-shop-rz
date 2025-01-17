@@ -1,0 +1,26 @@
+.filters-board {
+    flex: 0 1 300px;
+    border: 1px solid rgba(0, 0, 0, 0.219);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 10px;
+}
+.fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.priceFromTo {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.priceFromTo input {
+    max-width: 90px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}

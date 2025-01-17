@@ -7,18 +7,36 @@
     justify-content: space-between;
     gap: 10px;
     font-size: 1.5rem;
-    /* border: 1px solid black; */
 }
 .container-header p{
     font-size: 1.5rem;
 }
 .header-input {
     flex: 1 1 auto;
+
+    position: relative;
+}
+.header-input input {
     font-size: 1.5rem;
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.205);
     padding: 10px;
-
+    width: 100%;
+    box-sizing: border-box;
+}
+.clear {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+@media (any-hover: hover) {
+    .clear:hover {
+        opacity: 0.8;
+    }
 }
 .header-activ {
     display: flex;
