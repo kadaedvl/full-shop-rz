@@ -24,3 +24,13 @@
     padding: 5px 10px;
     border-radius: 10px;
 }
+
+.showDetails {
+    color: orange;
+}
+@media(any-hover: hover) {
+    .showDetails:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+}
