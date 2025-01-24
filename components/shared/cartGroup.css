@@ -1,0 +1,11 @@
+.cart-group-list {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 20px;
+}
+
+.cart-group-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}

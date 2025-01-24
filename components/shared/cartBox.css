@@ -1,6 +1,3 @@
 .cart-box-container {
     flex: 1 1 auto;
-    display: grid;
-    grid-template-columns: repeat(3,auto);
-    gap: 20px;
 }
