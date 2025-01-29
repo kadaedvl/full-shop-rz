@@ -1,3 +1,7 @@
 .cart-box-container {
     flex: 1 1 auto;
 }
+
+.test {
+    height: 500px;
+}
