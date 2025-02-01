@@ -1,13 +1,38 @@
-import { useState } from 'react'
+"use client"
 import './categories.css'
+import { useCategoryStore } from '@/store/category';
+const item =
+    [
+        {
+            id: 1,
+            name: "Одяг",
+        },
+        {
+            id: 2,
+            name: "Аксесуари",
+        },
+        {
+            id: 3,
+            name: "Диски",
+        },
+        {
+            id: 4,
+            name: "Касети",
+        },
+        {
+            id: 5,
+            name: "Платівки",
+        }
+    ]
 
 const Categories: React.FC = () => {
-    const [cat, setCat] = useState("Одяг");
-    const item = ["Одяг", "Аксесуари", "Диски", "Касети", "Платівки"]
+    const ActiveCategoryId = useCategoryStore((state) => state.activeId);
+    console.log(ActiveCategoryId)
     return (
         <div className='container container-categories'>
             <ul className="cat-list">
-                {item.map((el, index) => <li className={cat === el ? 'active' : ''} key={index} onClick={() => setCat(el)}>{el}</li>)}
+                {item.map((el) =>
+                    <a key={el.id} href={`/#${el.name}`}><li className={ActiveCategoryId === el.id ? 'active' : ''}>{el.name}</li></a>)}
             </ul>
         </div>
     )

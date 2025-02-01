@@ -2,13 +2,16 @@ import './cartGroup.css'
 import Cart from "./cart";
 import { useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
+import { useCategoryStore } from '@/store/category';
 
 interface CartGroupTypeProps {
     title: string;
+    catId: number
 }
 
 
-const CartGroup: React.FC<CartGroupTypeProps> = ({ title }) => {
+const CartGroup: React.FC<CartGroupTypeProps> = ({ title, catId }) => {
+    const setActiveCategoryId = useCategoryStore((state) => state.setActiveId)
     const intersectionRef: any = useRef(null);
 
     const intersection = useIntersection(intersectionRef, {
@@ -17,7 +20,7 @@ const CartGroup: React.FC<CartGroupTypeProps> = ({ title }) => {
 
     useEffect(() => {
         if (intersection?.isIntersecting) {
-            console.log(title)
+            setActiveCategoryId(catId)
         }
     }, [intersection?.isIntersecting])
     return (

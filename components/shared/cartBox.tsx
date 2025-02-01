@@ -29,7 +29,7 @@ const CartBox: React.FC = () => {
     return (
         <div className="cart-box-container">
             {titles.map((el) =>
-                <CartGroup key={el.id} title={el.name} />
+                <CartGroup key={el.id} title={el.name} catId={ el.id}/>
             )}
         </div>
     )
