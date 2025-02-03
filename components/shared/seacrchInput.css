@@ -1,0 +1,33 @@
+.focusBg {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.mainInput {
+    position: relative;
+    z-index: 2;
+}
+
+.searchResults {
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    z-index: 20;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.searchResults {
+    display: flex;
+    gap: 10px;
+}
+
+.searchResults img {
+    height: 36px;
+}

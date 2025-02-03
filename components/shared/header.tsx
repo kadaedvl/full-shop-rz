@@ -1,22 +1,14 @@
-"use client"
-import { ReactEventHandler, useRef, useState } from 'react'
+
 import './header.css'
+import SearchInput from './searchInput'
 
 const Header: React.FC = () => {
-
-    const [searchValue, setSearchValue] = useState('');
-    const localInputValue = useRef('')
-
-    const handleSearchValue = (event) => {
-        setSearchValue(event.target.value)
-    }
     return (
         <header>
             <div className="container-header">
                 <p>Header</p>
                 <div className='header-input'>
-                    <input placeholder="Search..." onChange={() => handleSearchValue(event)} value={searchValue}/>
-                    {searchValue&&<p className='clear' onClick={()=>setSearchValue('')}>X</p>}
+                    <SearchInput />
                 </div>
                 <div className='header-activ'>
                     <button>Login</button>
