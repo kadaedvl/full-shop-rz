@@ -15,19 +15,30 @@
 }
 
 .searchResults {
-    position: absolute;
     width: 100%;
     background-color: white;
     z-index: 20;
-    border-radius: 10px;
     padding: 5px;
-}
-
-.searchResults {
     display: flex;
     gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.searchResults:hover {
+    background-color: orange;
 }
 
 .searchResults img {
     height: 36px;
+}
+
+.searchList {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    position: absolute;
+    width: 100%;
+    padding-top: 5px;
+    border-radius: 10px;
+    overflow: hidden;
 }

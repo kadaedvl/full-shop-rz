@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
-import { useClickAway } from "react-use";
+import { useClickAway, useDebounce } from "react-use";
 import './seacrchInput.css'
 import Link from "next/link";
 import { Api } from "@/services/api-client";
@@ -21,23 +21,32 @@ const SearchInput = () => {
     const handleSearchValue = (event: any) => {
         setSearchValue(event.target.value)
     }
-    useEffect(() => {
+    useDebounce(() => {
         Api.products.search(searchValue).then(items => {
             setProducts(items);
         });
-    }, [searchValue])
+    }, 500, [searchValue])
+
+    const CleanFields = () => {
+        setSearchValue('');
+    }
+
+    const onLinkClick = () => {
+        setInputOnFocus(false);
+        CleanFields();
+        setProducts([]);
+    }
     return (
         <>
             {inputOnFocus && <div className="focusBg"></div>}
             <div ref={ref} className="mainInput" onFocus={() => setInputOnFocus(true)}>
                 <input placeholder="Search..." onChange={() => handleSearchValue(event)} value={searchValue} />
-                {searchValue && <p className='clear' onClick={() => setSearchValue('')}>X</p>}
+                {searchValue && <p className='clear' onClick={() => CleanFields()}>X</p>}
             </div>
-            <div>
-                {products.map((product) => (
-                    <Link className="searchResults"
-                        href={`/products/${product.id}`}>
-                        <img src={product.imageUrl}  alt={product.name}/>
+            <div className="searchList">
+                {inputOnFocus && products.map((product) => (
+                    <Link onClick={() => onLinkClick()} key={product.id} className="searchResults" href={`/product/${product.id}`}>
+                        <img src={product.imageUrl} alt={product.name} />
                         <span>{product.name}</span>
                     </Link>
                 ))}
