@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useClickAway, useDebounce } from "react-use";
 import './seacrchInput.css'
 import Link from "next/link";
@@ -10,7 +10,6 @@ const SearchInput = () => {
     const [inputOnFocus, setInputOnFocus] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [products, setProducts] = useState<Product[]>([]);
-    const localInputValue = useRef('')
 
     const ref = useRef(null)
 
@@ -21,10 +20,14 @@ const SearchInput = () => {
     const handleSearchValue = (event: any) => {
         setSearchValue(event.target.value)
     }
-    useDebounce(() => {
-        Api.products.search(searchValue).then(items => {
-            setProducts(items);
-        });
+    useDebounce(async () => {
+        try {
+            const responce = await Api.products.search(searchValue);
+            setProducts(responce);
+        } catch (error) {
+            console.error(error);
+        }
+
     }, 500, [searchValue])
 
     const CleanFields = () => {
@@ -34,7 +37,7 @@ const SearchInput = () => {
     const onLinkClick = () => {
         setInputOnFocus(false);
         CleanFields();
-        setProducts([]);
+        // setProducts([]);
     }
     return (
         <>
@@ -42,16 +45,25 @@ const SearchInput = () => {
             <div ref={ref} className="mainInput" onFocus={() => setInputOnFocus(true)}>
                 <input placeholder="Search..." onChange={() => handleSearchValue(event)} value={searchValue} />
                 {searchValue && <p className='clear' onClick={() => CleanFields()}>X</p>}
-            </div>
-            <div className="searchList">
-                {inputOnFocus && products.map((product) => (
-                    <Link onClick={() => onLinkClick()} key={product.id} className="searchResults" href={`/product/${product.id}`}>
-                        <img src={product.imageUrl} alt={product.name} />
-                        <span>{product.name}</span>
-                    </Link>
-                ))}
+                {inputOnFocus && <div className="searchList">
+                    {products.map((product) => (
+                        <Link
+                            key={product.id}
+                            className="searchResults"
+                            href={`/product/${product.id}`}
+                            onClick={() => onLinkClick()}
+                        >
+                            <img
+                                src={product.imageUrl}
+                                alt={product.name}
+                            />
+                            <span>{product.name}</span>
+                        </Link>
+                    ))}
 
+                </div>}
             </div>
+
         </>
     )
 }

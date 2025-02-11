@@ -42,7 +42,6 @@ const FiltersPanel: React.FC = () => {
       name: '2019',
       checked: false,
     },])
-  console.log(yeartTestValues)
 
   return (
     <div className="filters-board">

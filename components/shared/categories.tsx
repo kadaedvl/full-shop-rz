@@ -27,7 +27,6 @@ const item =
 
 const Categories: React.FC = () => {
     const ActiveCategoryId = useCategoryStore((state) => state.activeId);
-    console.log(ActiveCategoryId)
     return (
         <div className='container container-categories'>
             <ul className="cat-list">
