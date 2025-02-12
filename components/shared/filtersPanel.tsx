@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react';
 import FieldsetList from './fieldsetList';
 import './filtersPanel.css'
@@ -50,7 +51,7 @@ const FiltersPanel: React.FC = () => {
         items={yeartTestValues}
         maxView={maxView}
         setMaxView={setMaxView}
-        setYeartTestValues= {setYeartTestValues}
+        setYeartTestValues={setYeartTestValues}
       />
 
       <fieldset className="fieldset">
