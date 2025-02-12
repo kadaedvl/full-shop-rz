@@ -4,6 +4,7 @@
     flex-direction: column;
     gap: 5px;
 }
+
 .cart-img {
     width: 100%;
     height: 200px;
@@ -11,16 +12,25 @@
     border-radius: 10px;
     object-fit: contain;
 }
+
 .cart-button {
     padding: 0px 20px !important;
     width: 100%;
     font-size: 1rem;
 }
+
 .cart-size-container {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 .cart-size {
     padding: 10px;
+}
+
+@media (any-hover: hover) {
+    .cart-size:hover {
+        cursor: pointer;
+    }
 }

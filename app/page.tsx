@@ -16,7 +16,7 @@ export default async function Home() {
   })
   return (
     <section>
-      <Categories />
+      <Categories categories={categories} />
       <div className="main-container">
         <FiltersPanel />
         <CartBox categories={categories} />

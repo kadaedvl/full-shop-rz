@@ -15,7 +15,11 @@ const Cart: React.FC<CartPropsTypes> = ({ title, imageUrl, variations }) => {
             {variations.size && <div>Sizes:</div>}
             <div className='cart-size-container'>
                 {variations.map((el: { size: any; id: number }) =>
-                    <button className='cart-size' key={el.id}>{el.size} </button>
+                    <>
+                        {/* <button className='cart-size' key={el.id}>{el.size} </button> */}
+                        <input type="radio" id={el.price} value={el.size} />
+                        <label htmlFor={el.price}>{el.size}</label>
+                    </>
                 )}
             </div>
             <button className='cart-button'>BUY</button>

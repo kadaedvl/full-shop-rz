@@ -1,9 +1,9 @@
 'use client'
-import './cartGroup.css'
-import Cart from "./cart";
+import { useCategoryStore } from '@/store/category';
 import { Key, useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
-import { useCategoryStore } from '@/store/category';
+import Cart from "./cart";
+import './cartGroup.css'
 
 interface CartGroupTypeProps {
     title: string;
@@ -17,7 +17,7 @@ const CartGroup: React.FC<CartGroupTypeProps> = ({ title, catId, products }) => 
     const intersectionRef: any = useRef(null);
 
     const intersection = useIntersection(intersectionRef, {
-        threshold: 0.4,
+        threshold: 1,
     });
 
     useEffect(() => {

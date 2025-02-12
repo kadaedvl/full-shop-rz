@@ -1,4 +1,3 @@
-import { console } from 'inspector';
 import CartGroup from './cartGroup';
 import './cartBox.css'
 import { Key } from 'react';

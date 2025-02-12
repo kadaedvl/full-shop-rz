@@ -1,36 +1,17 @@
 "use client"
-import './categories.css'
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
 import { useCategoryStore } from '@/store/category';
-const item =
-    [
-        {
-            id: 1,
-            name: "Одяг",
-        },
-        {
-            id: 2,
-            name: "Аксесуари",
-        },
-        {
-            id: 3,
-            name: "Диски",
-        },
-        {
-            id: 4,
-            name: "Касети",
-        },
-        {
-            id: 5,
-            name: "Платівки",
-        }
-    ]
+import './categories.css'
 
-const Categories: React.FC = () => {
+interface CategoriesPropsType {
+    categories: any;
+}
+const Categories: React.FC<CategoriesPropsType> = ({ categories }) => {
     const ActiveCategoryId = useCategoryStore((state) => state.activeId);
     return (
         <div className='container container-categories'>
             <ul className="cat-list">
-                {item.map((el) =>
+                {categories.map((el: { id: Key | null | undefined; name: string | number | bigint | boolean | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<string | number | bigint | boolean | ReactPortal | ReactElement<unknown, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined> | null | undefined; }) =>
                     <a key={el.id} href={`/#${el.name}`}><li className={ActiveCategoryId === el.id ? 'active' : ''}>{el.name}</li></a>)}
             </ul>
         </div>
