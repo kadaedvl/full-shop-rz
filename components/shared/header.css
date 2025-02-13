@@ -7,6 +7,7 @@
     justify-content: space-between;
     gap: 10px;
     font-size: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .container-header p {
@@ -16,6 +17,7 @@
 .header-input {
     flex: 1 1 auto;
     position: relative;
+    order: 1;
 }
 
 .header-input input {
@@ -47,6 +49,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    order: 2;
 }
 
 button {
@@ -54,4 +57,29 @@ button {
     border-radius: 10px;
     border: 1px solid rgba(0, 0, 0, 0.205);
     padding: 10px;
+}
+
+.logo {
+    display: block;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 0;
+}
+
+.logo img {
+    object-fit: contain;
+    width: 100%;
+    max-width: 100px;
+}
+
+@media (max-width: 734px) {
+    .header-activ {
+        order: 1;
+    }
+
+    .header-input {
+        order: 2;
+    }
 }

@@ -31,8 +31,10 @@ const CartGroup: React.FC<CartGroupTypeProps> = ({ title, catId, products }) => 
         <div className="cart-group" id={title} ref={intersectionRef}>
             <h2 className='cart-group-title'>{title}</h2>
             <div className='cart-group-list'>
-                {products.map((el: { id: Key | null | undefined; name: string; imageUrl: string; variations: any }) =>
-                    <Cart key={el.id} title={el.name} imageUrl={el.imageUrl} variations={el.variations} />
+                {products.map((el) =>
+                    <a key={el.id} href={`/product/${el.id}`}>
+                        <Cart title={el.name} imageUrl={el.imageUrl} variations={el.variations} />
+                    </a>
                 )}
             </div>
 

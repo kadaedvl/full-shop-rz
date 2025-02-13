@@ -1,12 +1,13 @@
 
 import './header.css'
 import SearchInput from './searchInput'
+import logo from '../../public/logo.png'
 
 const Header: React.FC = () => {
     return (
         <header>
             <div className="container-header">
-                <p>Header</p>
+                <a className='logo' href='/'><img src={logo.src} /></a>
                 <div className='header-input'>
                     <SearchInput />
                 </div>

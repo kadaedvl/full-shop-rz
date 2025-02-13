@@ -69,7 +69,7 @@ async function up() {
 
     await prisma.productVariation.createMany({
         data: [
-            generateProductVariation({ productId: product1.id, size: 10, }),
+            generateProductVariation({ productId: product1.id, size: 10 }),
             generateProductVariation({ productId: product1.id, size: 20 }),
             generateProductVariation({ productId: product1.id, size: 30 }),
 

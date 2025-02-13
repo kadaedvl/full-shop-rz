@@ -1,9 +1,36 @@
+import { prisma } from "@/prisma/prisma.client";
+import './page.css'
+import { notFound } from "next/navigation";
+import Selecter from "@/components/shared/Selecter";
 
-const ProductPage = ({ params: { id } }: { params: { id: string } }) => {
-
+const ProductPage = async ({ params: { id } }: { params: { id: string } }) => {
+    const product = await prisma.product.findFirst({ where: { id: Number(id) } });
+    if (!product) {
+        return notFound();
+    }
     return (
         <div className="container">
-            ProductPage {id}
+            <img className='productImg' src={product?.imageUrl}></img>
+            <div className="productInfo">
+                <h1 className="productName">{product.name}</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo cumque autem tempore dolore officia numquam veritatis, doloribus adipisci, accusantium eum perspiciatis, ducimus placeat. Voluptate quas ducimus explicabo cumque iusto labore!</p>
+                <Selecter
+                    selectedValue='1'
+                    items={[
+                        {
+                            name: 'S',
+                            value: '10'
+                        },
+                        {
+                            name: 'L',
+                            value: '20'
+                        },
+                        {
+                            name: 'XS',
+                            value: '30'
+                        }
+                    ]} />
+            </div>
         </div>
     );
 }

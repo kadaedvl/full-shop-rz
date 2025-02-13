@@ -1,0 +1,17 @@
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    border: 1px solid black;
+    padding: 0 10px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+.productImg {
+    max-width: 50%;
+}
+.productName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}

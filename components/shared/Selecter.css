@@ -1,0 +1,28 @@
+.variations-board {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.variations-board button {
+    background-color: white;
+    border-radius: 10px;
+    min-width: 50px;
+    border: none;
+    border: 1px solid black;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+.variations-board button.selectedValue {
+    background-color: red;
+    opacity: 1;
+}
+@media (any-hover:hover) {
+    .variations-board button:hover {
+        cursor: pointer;
+        opacity: 0.7;
+    }
+    .variations-board button.selectedValue:hover {
+        opacity: 1;
+    }
+}
