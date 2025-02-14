@@ -1,30 +1,38 @@
-import './cart.css'
+import React from 'react';
+import './cart.css';
+
+interface Variation {
+    name: string;
+    price: number;
+    size?: string;
+}
 
 interface CartPropsTypes {
     title: string;
     imageUrl: string;
-    variations: any;
+    variations: Variation[];
 }
-const Cart: React.FC<CartPropsTypes> = ({ title, imageUrl, variations }) => {
+
+const Cart: React.FC<CartPropsTypes> = React.memo(({ title, imageUrl, variations }) => {
     return (
         <div className='cart'>
             <h2 className='title'>{title}</h2>
-            <img className='cart-img' src={imageUrl}></img>
+            <img className='cart-img' src={imageUrl} alt={title} />
             <div>description of Product</div>
-            <div>{variations.map((el: { price: any; id: number }) => <div key={el.id}>{el.price}$ </div>)}</div>
-            {variations.size && <div>Sizes:</div>}
+            <div>
+                {variations.map(({ name, price, id }) => (
+                    <div key={id}>{price}$</div>
+                ))}
+            </div>
+            {variations.some(v => v.size) && <div>Sizes:</div>}
             <div className='cart-size-container'>
-                {variations.map((el: { size: any; id: number }) =>
-                    <>
-                        {/* <button className='cart-size' key={el.id}>{el.size} </button> */}
-                        <input type="radio" id={el.price} value={el.size} />
-                        <label htmlFor={el.price}>{el.size}</label>
-                    </>
-                )}
+                {variations.map(({ name, id, size }) => (
+                    size && <p key={id}>{size}</p>
+                ))}
             </div>
             <button className='cart-button'>BUY</button>
         </div>
-    )
-}
+    );
+});
 
 export default Cart;

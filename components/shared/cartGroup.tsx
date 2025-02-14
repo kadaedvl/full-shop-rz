@@ -4,6 +4,7 @@ import { Key, useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
 import Cart from "./cart";
 import './cartGroup.css'
+import Link from 'next/link';
 
 interface CartGroupTypeProps {
     title: string;
@@ -32,9 +33,9 @@ const CartGroup: React.FC<CartGroupTypeProps> = ({ title, catId, products }) => 
             <h2 className='cart-group-title'>{title}</h2>
             <div className='cart-group-list'>
                 {products.map((el) =>
-                    <a key={el.id} href={`/product/${el.id}`}>
+                    <Link key={el.id} href={`/product/${el.id}`}>
                         <Cart title={el.name} imageUrl={el.imageUrl} variations={el.variations} />
-                    </a>
+                    </Link>
                 )}
             </div>
 

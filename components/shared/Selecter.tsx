@@ -16,7 +16,7 @@ const Selecter: React.FC<Props> = ({ items, onClick, className, selectedValue })
     return (
         <div className='variations-board'>
             {items.map((item, index) => (
-                <button className={Number(selectedValue) === index ? 'selectedValue' : ''} key={item.name} >{item.name}</button>
+                <button key={index} className={Number(selectedValue) === index ? 'selectedValue' : ''}>{item.name}</button>
             ))}
         </div>
     )
