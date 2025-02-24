@@ -81,6 +81,10 @@ async function up() {
             generateProductVariation({ productId: 2 }),
             generateProductVariation({ productId: 3 }),
             generateProductVariation({ productId: 4 }),
+            generateProductVariation({ productId: 5 }),
+            generateProductVariation({ productId: 6 }),
+            generateProductVariation({ productId: 7 }),
+            generateProductVariation({ productId: 8 }),
 
         ]
     });
