@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import './choose-product-modal.css'
+import { useState } from 'react';
 
 type ChooseProductModalProps = {
     product: any;
@@ -10,6 +11,8 @@ type ChooseProductModalProps = {
 
 const ChooseProductModal: React.FC<ChooseProductModalProps> = ({ product, productVariation }) => {
     const router = useRouter();
+
+    const [selectSize, setSelectSize] = useState('10');
     return (
         <>
             <div className='background'></div>
@@ -19,8 +22,10 @@ const ChooseProductModal: React.FC<ChooseProductModalProps> = ({ product, produc
                 <div className='modalInfo'>
                     <p>{product.name}</p>
                     <div className='content'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio exercitationem aperiam fugiat ex animi odit iste expedita iusto, eum asperiores amet culpa, beatae dolore vitae illo eligendi maxime quod voluptatum!</div>
-                    {productVariation.map((el) => (<div key={el.price}>{el.price}</div>))}
-                    <button className='modalBuyButton'>Add by {productVariation.price} $</button>
+                    {productVariation.map((el) => (
+                        <button onClick={()=>setSelectSize(el.price)} key={el.price}>{el.size}</button>
+                        ))}
+                    <button className='modalBuyButton'>Add by {selectSize} $</button>
                 </div>
             </div>
         </>
