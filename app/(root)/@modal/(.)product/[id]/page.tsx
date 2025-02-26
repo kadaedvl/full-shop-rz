@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Selecter from "@/components/shared/Selecter";
 import ChooseProductModal from "@/components/shared/modals/choose-product-modal";
 
+
 const ProductModalPage = async ({ params: { id } }: { params: { id: string } }) => {
     const product = await prisma.product.findFirst({ where: { id: Number(id) } });
     const productVariation = await prisma.productVariation.findMany({ where: { productId: Number(id) } });

@@ -61,3 +61,11 @@
 .content {
     flex: 1 1 auto;
 }
+
+.buttonActive {
+    border: 1px solid black;
+}
+.modalSizes {
+    display: flex;
+    gap: 10px;
+}
