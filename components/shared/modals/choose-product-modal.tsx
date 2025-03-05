@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import './choose-product-modal.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 type ChooseProductModalProps = {
     product: any;
@@ -11,31 +11,48 @@ type ChooseProductModalProps = {
 
 const ChooseProductModal: React.FC<ChooseProductModalProps> = ({ product, productVariation }) => {
     const router = useRouter();
+    const [selectSize, setSelectSize] = useState<string>('');
+
+    useEffect(() => {
+        if (productVariation.length > 0) {
+            setSelectSize(productVariation[0]?.price?.toString() || '');
+        }
+    }, [productVariation]);
+
     const onSelectSize = (el) => {
-        setSelectSize(el.price)
+        setSelectSize(el.price.toString());
     }
-    const [selectSize, setSelectSize] = useState('10');
+
+    const productElement = productVariation.map((el) => (
+        <button
+            className={el.price.toString() === selectSize ? 'buttonActive' : ''}
+            onClick={() => onSelectSize(el)}
+            key={el.price}>
+            {el.size}
+        </button>
+    ));
+
+    const showTotalPrice = () => {
+        const totalPrice = productVariation.filter((el) => el.price.toString() === selectSize.toString());
+        console.log(totalPrice);
+    }
     return (
         <>
             <div className='background'></div>
             <div className="modal">
                 <button className='modalCloseButton' onClick={() => router.back()}>X</button>
-                <img src={product.imageUrl} />
+                <img src={product.imageUrl} alt={product.name} />
                 <div className='modalInfo'>
                     <p>{product.name}</p>
-                    <div className='content'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odio exercitationem aperiam fugiat ex animi odit iste expedita iusto, eum asperiores amet culpa, beatae dolore vitae illo eligendi maxime quod voluptatum!</div>
-                    {productVariation.length !== 1 ? console.log('YES') : console.log('NO')}
-                    <div className='modalSizes'>
-                        {productVariation.map((el) => (
-                            <button
-                                className={el.price === selectSize ? 'buttonActive' : ''}
-                                onClick={() => onSelectSize(el)}
-                                key={el.price}>
-                                {el.size}
-                            </button>
-                        ))}
-                    </div>
-                    <button className='modalBuyButton'>Add by {selectSize} $</button>
+                    <div className='content'>Lorem ipsum dolor sit, amet consectetur adipisicing elit...</div>
+
+                    {productVariation.length > 1 && (
+                        <div className='modalSizes'>
+                            {productElement}
+                        </div>
+                    )}
+
+                    <button onClick={() => showTotalPrice()} className='modalBuyButton'>Add by {selectSize} $</button>
                 </div>
             </div>
         </>

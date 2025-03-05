@@ -2,6 +2,7 @@
 import './header.css'
 import SearchInput from './searchInput'
 import logo from '../../public/logo.png'
+import { CartButton } from './cartButton'
 
 const Header: React.FC = () => {
     return (
@@ -12,8 +13,8 @@ const Header: React.FC = () => {
                     <SearchInput />
                 </div>
                 <div className='header-activ'>
-                    <button>Login</button>
-                    <button>0 UAH | 0 item</button>
+                    <button className='loginButton'>Login</button>
+                    <CartButton />
                 </div>
             </div>
         </header>

@@ -1,0 +1,167 @@
+.dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 5;
+}
+
+.dialog-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dialog-content {
+  background: white;
+  padding: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 400px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.dialog-content.open {
+  transform: translateX(0);
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.close-button:hover {
+  opacity: 1;
+}
+
+.sheet-trigger {
+  padding: 8px 16px;
+  border: none;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sheet-trigger:hover {
+  background: #0056b3;
+}
+
+.header-cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 10px 20px; */
+  font-size: 2rem !important;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header-cart-button:hover {
+  background-color: #0056b3;
+}
+
+.header-cart-icon {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.dialog-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 100%;
+}
+
+.dialog-items-body {
+  flex: 1 1 auto;
+}
+
+.dialog-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #dbdbdb;
+  padding: 20px;
+  gap: 10px;
+}
+
+.dialog-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.product-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity-btn {
+  padding: 5px 10px;
+  background: #f0f0f0;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-btn:hover {
+  background: #ddd;
+}
+
+.quantity-value {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.product-price {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.remove-btn {
+  padding: 5px 10px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background: darkred;
+}
