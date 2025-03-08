@@ -98,6 +98,11 @@
   flex: 1 1 auto;
 }
 
+.dialog-items-body a {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
 .dialog-footer {
   display: flex;
   flex-direction: column;
@@ -108,11 +113,14 @@
 }
 
 .dialog-item {
-  display: flex;
+  font-size: 2px !important;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr auto;
+  justify-items: center;
   align-items: center;
-  justify-content: space-between;
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  gap: 5px;
 }
 
 .product-image {
@@ -164,4 +172,8 @@
 
 .remove-btn:hover {
   background: darkred;
+}
+
+.dialog-text span {
+  float: right;
 }
