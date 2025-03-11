@@ -1,7 +1,7 @@
 import { axiosInstantds } from "./axiosInstantds"
-import { Cart } from "@prisma/client";
+import { CartDTO } from "./dto/cart.dto";
 
-export const fetchCart = async (): Promise<Cart> => {
-    const { data } = await axiosInstantds.get<Cart>('/cart');
+export const fetchCart = async (): Promise<CartDTO> => {
+    const { data } = await axiosInstantds.get<CartDTO>('/cart');
     return data;
 }

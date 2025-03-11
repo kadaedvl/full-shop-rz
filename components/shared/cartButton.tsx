@@ -9,10 +9,11 @@ function Dialog({ isOpen, onClose }) {
 
   // const { totalAmount, fetchCartItems, items } = userCartStore(state => [state.totalAmount, state.fetchCartItems, state.items]);
   // useEffect(() => { fetchCartItems() }, [])
-  const { fetchCartItems, items } = useCartStore((state) => [state.fetchCartItems, state.items]);
-  console.log(items)
-  useEffect(() => { fetchCartItems() }, [])
+  const fetchCartItems = useCartStore(state => state.fetchCartItems);
+  const items = useCartStore(state => state.items);
 
+  useEffect(() => { fetchCartItems() }, [])
+  console.log(items)
   const [TestProduct, setTestProduct] = useState([
     {
       id: 1,

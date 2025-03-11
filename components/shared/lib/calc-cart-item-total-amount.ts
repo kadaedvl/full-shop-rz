@@ -1,3 +1,5 @@
-export const calcTotalAmount = (item: any) => {
+import { CartItemDTO } from "@/services/dto/cart.dto";
+
+export const calcTotalAmount = (item: CartItemDTO): number => {
     return item.productVariation.price * item.quantity;
 }
