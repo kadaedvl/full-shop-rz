@@ -11,12 +11,12 @@ export type IcartItems = {
 }
 
 interface ReturnProps {
-    items: IcartItems[];
+    cartItem: IcartItems[];
     totalAmount: number;
 }
 
 export const getCartDetails = (data: CartDTO): ReturnProps => {
-    const items = data.items.map((el) => ({
+    const cartItem = data.cartItem.map((el) => ({
         id: el.id,
         quantity: el.quantity,
         name: el.productVariation.product.name,
@@ -25,7 +25,7 @@ export const getCartDetails = (data: CartDTO): ReturnProps => {
         size: el.productVariation.size,
     }));
     return {
-        items,
+        cartItem,
         totalAmount: data.totalAmount,
     };
 }

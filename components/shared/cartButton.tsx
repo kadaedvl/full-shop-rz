@@ -7,13 +7,10 @@ import { useCartStore } from "./store/cart";
 function Dialog({ isOpen, onClose }) {
   const [totalQuantity, setTotalQuantity] = useState(0);
 
-  // const { totalAmount, fetchCartItems, items } = userCartStore(state => [state.totalAmount, state.fetchCartItems, state.items]);
-  // useEffect(() => { fetchCartItems() }, [])
   const fetchCartItems = useCartStore(state => state.fetchCartItems);
-  const items = useCartStore(state => state.items);
-
+  const cartItem = useCartStore(state => state.cartItem);
   useEffect(() => { fetchCartItems() }, [])
-  console.log(items)
+
   const [TestProduct, setTestProduct] = useState([
     {
       id: 1,
@@ -83,10 +80,10 @@ function Dialog({ isOpen, onClose }) {
           </div>
           {total.totalPrice !== 0 ?
             <ul className="dialog-items-body">
-              {TestProduct.map((product) => (
+              {cartItem.map((product) => (
                 <li key={product.id} className="dialog-item">
                   <img
-                    src={product.imgUrl}
+                    src={product.imageUrl}
                     alt="Product"
                     className="product-image"
                   />

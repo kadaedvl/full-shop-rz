@@ -6,7 +6,7 @@ export interface CartState {
     loading: boolean;
     error: boolean;
     totalAmount: number;
-    items: IcartItems[];
+    cartItem: IcartItems[];
     fetchCartItems: () => Promise<void>;
     // updateItemQuantuty: (id: number, quantity: number) => Promise<void>;
     // addCartItem: (values: any) => Promise<void>;
@@ -14,7 +14,7 @@ export interface CartState {
 }
 
 export const useCartStore = create<CartState>((set, get) => ({
-    items: [],
+    cartItem: [],
     error: false,
     loading: true,
     totalAmount: 0,

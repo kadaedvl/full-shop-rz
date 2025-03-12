@@ -34,7 +34,6 @@ const ChooseProductModal: React.FC<ChooseProductModalProps> = ({ product, produc
 
     const showTotalPrice = () => {
         const totalPrice = productVariation.filter((el) => el.price.toString() === selectSize.toString());
-        console.log(totalPrice);
     }
     return (
         <>
