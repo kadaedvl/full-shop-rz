@@ -10,7 +10,7 @@ function Dialog({ isOpen, onClose }) {
   const fetchCartItems = useCartStore(state => state.fetchCartItems);
   const cartItem = useCartStore(state => state.cartItem);
   useEffect(() => { fetchCartItems() }, [])
-
+  console.log(cartItem)
   const [TestProduct, setTestProduct] = useState([
     {
       id: 1,
@@ -75,7 +75,7 @@ function Dialog({ isOpen, onClose }) {
 
         <div className="dialog-body">
           <div className="dialog-head">
-            <div className="dialog-text">basket have: {total.totalQuantity} items</div>
+            <div className="dialog-text">basket have: {cartItem.length} items</div>
             <button className="close-button" onClick={onClose}>×</button>
           </div>
           {total.totalPrice !== 0 ?
