@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import './choose-product-modal.css'
 import { useState, useEffect } from 'react';
+import { useCartStore } from '../store/cart';
 
 type ChooseProductModalProps = {
     product: any;
@@ -12,7 +13,15 @@ type ChooseProductModalProps = {
 const ChooseProductModal: React.FC<ChooseProductModalProps> = ({ product, productVariation }) => {
     const router = useRouter();
     const [selectSize, setSelectSize] = useState<string>('');
+    // const firstItem = product.item[0];
+    const addCartItem = useCartStore(state => state.addCartItem);
 
+    // const onAddProduct = () => {
+    //     addCartItem({
+    //         productVariationid: firstItem.id,
+    //     })
+    // }
+    const onAdd = () => {}
     useEffect(() => {
         if (productVariation.length > 0) {
             setSelectSize(productVariation[0]?.price?.toString() || '');

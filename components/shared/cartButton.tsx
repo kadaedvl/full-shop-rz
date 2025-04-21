@@ -14,6 +14,7 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
   const fetchCartItems = useCartStore(state => state.fetchCartItems);
   const cartItem = useCartStore(state => state.cartItem);
   const updateItemQuantuty = useCartStore(state => state.updateItemQuantuty);
+  const removeCartItem = useCartStore(state => state.removeCartItem);
   useEffect(() => { fetchCartItems() }, [])
 
   const onClickCountButton = (id: number, quantity: number, type: 'inc' | 'dec') => {
@@ -50,7 +51,7 @@ const Dialog: React.FC<DialogProps> = ({ isOpen, onClose }) => {
                 </div>
                 <p className="product-price">{product.price * product.quantity}</p>
 
-                <button className="remove-btn">x</button>
+                <button className="remove-btn" onClick={() => removeCartItem(product.id)}>x</button>
               </li>
             ))}
 
